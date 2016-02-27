@@ -5,22 +5,22 @@ public class BuildAHeroTest3
 {
     private static Scanner input = new Scanner(System.in);
     
-    private static int INITIAL_HERO_HEALTH = 0;
-    private static int INITIAL_HERO_ATTACK = 0;
-    private static int INITIAL_HERO_MAGIC = 0;
+    private static int initialHeroHealth = 0;
+    private static int initalHeroAttack = 0;
+    private static int initialHeroMagic = 0;
     
-    private static int HERO_HEALTH = 0;
-    private static int HERO_ATTACK = 0;
-    private static int HERO_MAGIC = 0;
+    private static int heroHealth = 0;
+    private static int heroAttack = 0;
+    private static int heroMagic = 0;
     
-    private static int INITIAL_MONSTER_HEALTH = 0;
-    private static int INITIAL_MONSTER_ATTACK = 0;
+    private static int initialMonsterHealth = 0;
+    private static int initialMonsterAttack = 0;
     
-    private static int MONSTER_HEALTH = 0;
-    private static int MONSTER_ATTACK = 0;
-    private static String MONSTER_NAME;
+    private static int monsterHealth = 0;
+    private static int monsterAttack = 0;
+    private static String monsterName;
     
-    private static int Action = 0;
+    private static int action = 0;
     
     public static void heroCreation()
     {
@@ -29,9 +29,9 @@ public class BuildAHeroTest3
          
          for (int statPoints = 20; statPoints > 0;) {
             System.out.printf("Your current stats are:\n");
-            System.out.printf("Health: %d\n", INITIAL_HERO_HEALTH);
-            System.out.printf("Attack Power: %d\n", INITIAL_HERO_ATTACK);
-            System.out.printf("Magic Power: %d\n", INITIAL_HERO_MAGIC);
+            System.out.printf("Health: %d\n", initialHeroHealth);
+            System.out.printf("Attack Power: %d\n", initalHeroAttack);
+            System.out.printf("Magic Power: %d\n", initialHeroMagic);
             System.out.println();
             
             System.out.printf("You have %d stat points\n", statPoints);
@@ -44,15 +44,15 @@ public class BuildAHeroTest3
             
             if (statSelection == 1) {
                 statPoints --;
-                INITIAL_HERO_HEALTH += 10;
+                initialHeroHealth += 10;
             }
             else if (statSelection == 2) {
                 statPoints --;
-                INITIAL_HERO_ATTACK += 1;
+                initalHeroAttack += 1;
             }
             else if (statSelection == 3) {
                 statPoints --;
-                INITIAL_HERO_MAGIC += 3;
+                initialHeroMagic += 3;
             }
             else {
                 System.out.printf("%d is not a valid input\n", statSelection);
@@ -62,9 +62,9 @@ public class BuildAHeroTest3
                 if (statPoints == 0) {
                     System.out.println("Great! You've finished creating your character.");
                     System.out.println("Your stats are:");
-                    System.out.printf("Health: %d\n", INITIAL_HERO_HEALTH);
-                    System.out.printf("Attack Power: %d\n", INITIAL_HERO_ATTACK);
-                    System.out.printf("Magic Power: %d\n", INITIAL_HERO_MAGIC);
+                    System.out.printf("Health: %d\n", initialHeroHealth);
+                    System.out.printf("Attack Power: %d\n", initalHeroAttack);
+                    System.out.printf("Magic Power: %d\n", initialHeroMagic);
                     System.out.println();
                 }
         }
@@ -77,31 +77,31 @@ public class BuildAHeroTest3
         
         
         if (monsterSelection == 0) {
-            MONSTER_NAME = "goblin";
-            INITIAL_MONSTER_HEALTH = 75;
-            INITIAL_MONSTER_ATTACK = 8;
+            monsterName = "goblin";
+            initialMonsterHealth = 75;
+            initialMonsterAttack = 8;
         }
         else if (monsterSelection == 1) {
-            MONSTER_NAME = "orc";
-            INITIAL_MONSTER_HEALTH = 100;
-            INITIAL_MONSTER_ATTACK = 12;
+            monsterName = "orc";
+            initialMonsterHealth = 100;
+            initialMonsterAttack = 12;
         }
         else if (monsterSelection == 2) {
-            MONSTER_NAME = "troll";
-            INITIAL_MONSTER_HEALTH = 150;
-            INITIAL_MONSTER_ATTACK = 15;
+            monsterName = "troll";
+            initialMonsterHealth = 150;
+            initialMonsterAttack = 15;
         }
-        System.out.printf("You have encountered a(n) %s\n", MONSTER_NAME);
+        System.out.printf("You have encountered a(n) %s\n", monsterName);
     }
     
     private static void statTransition()
     {
-        HERO_HEALTH = INITIAL_HERO_HEALTH;
-        HERO_ATTACK = INITIAL_HERO_ATTACK;
-        HERO_MAGIC = INITIAL_HERO_MAGIC;
+        heroHealth = initialHeroHealth;
+        heroAttack = initalHeroAttack;
+        heroMagic = initialHeroMagic;
         
-        MONSTER_HEALTH = INITIAL_MONSTER_HEALTH;
-        MONSTER_ATTACK = INITIAL_MONSTER_ATTACK;
+        monsterHealth = initialMonsterHealth;
+        monsterAttack = initialMonsterAttack;
     }
     
    
@@ -109,11 +109,11 @@ public class BuildAHeroTest3
     public static void combatInfo()
     {
         //Print the Monster’s health
-        System.out.println("Monster HP: " + MONSTER_HEALTH);
+        System.out.println("Monster HP: " + monsterHealth);
         //Print the Player’s health
-        System.out.println("Your HP: " + HERO_HEALTH);
+        System.out.println("Your HP: " + heroHealth);
         //Print the Player’s magic points
-        System.out.println("Your MP: " + HERO_MAGIC);
+        System.out.println("Your MP: " + heroMagic);
         System.out.println();
         
         /*Combat menu prompt*/
@@ -136,31 +136,31 @@ public class BuildAHeroTest3
         Random damage = new Random();
         
         //Variable for user input (as number) and acquire value from Scanner object
-            Action = input.nextInt();
+            action = input.nextInt();
             System.out.println();
        
         
             //If player chose option 1, (check with equality operator)
-            if (Action == 1) {
+            if (action == 1) {
                 //Calculate damage & update monster health using subtraction
                 //Calculation: new monster health is old monster health minus hero attack power
-                int totalDamage = (((damage.nextInt(HERO_ATTACK/2)) + 1) + ((damage.nextInt(HERO_ATTACK/2)) + 1) + (HERO_ATTACK/2));
-                 MONSTER_HEALTH = MONSTER_HEALTH - totalDamage;
-                //print attack text:
-            System.out.println("You strike the " + MONSTER_NAME + " with your sword for " + totalDamage + " damage");
+                int totalDamage = (((damage.nextInt(heroAttack/2)) + 1) + ((damage.nextInt(heroAttack/2)) + 1) + (heroAttack/2));
+                 monsterHealth = monsterHealth - totalDamage;
+                //print attack text:heroAttack
+            System.out.println("You strike the " + monsterName + " with your sword for " + totalDamage + " damage");
             System.out.println();
             }
             
                 //Else if player chose option 2, (check with equalit yoperator)
-                else if (Action == 2) {
+                else if (action == 2) {
                     //If player has 3 or more magic points
-                    if (HERO_MAGIC >= 3) {
+                    if (heroMagic >= 3) {
                     //Calculate damage & update monster health using division
                     //Calculation: new monster health is old monster health divided by two
-                    MONSTER_HEALTH = MONSTER_HEALTH / 2;
+                    monsterHealth = monsterHealth / 2;
                     //Reduce player's mana points by the spell cost using subtraction
                     //Calculation: new magic power is old magic power minus 3
-                    HERO_MAGIC = HERO_MAGIC - 3;
+                    heroMagic = heroMagic - 3;
                     //print spell message:
                     System.out.println("You cast the weaken spell on the monster.");
                     System.out.println();
@@ -173,17 +173,17 @@ public class BuildAHeroTest3
                 }
             
                 //Else if the player chose option 3, (check with equality operator)
-                else if (Action == 3) {
+                else if (action == 3) {
                     //Increment magic points and update players magic using addition
                     //Calculation: new hero magic is old hero magic plus one
-                   HERO_MAGIC = HERO_MAGIC + 1;
+                   heroMagic = heroMagic + 1;
                 //print charging message:
                 System.out.println("You focus and charge your magic power.");
                 System.out.println();
                 }
         
                 //Else if the player chose option 4, (check with equality operator)
-                else if (Action == 4) {
+                else if (action == 4) {
                 //print retreat message:
                 System.out.println("You run away!");
                 System.out.println();
@@ -202,42 +202,42 @@ public class BuildAHeroTest3
         Random damage = new Random();
         
              //If monsters health is above 0 and user did not choose action 4 
-            if (MONSTER_HEALTH > 0 && Action != 4) {   
+            if (monsterHealth > 0 && action != 4) {   
             //Have monster attack player and print message  
-            int monsterDamage = (((damage.nextInt(MONSTER_ATTACK/2)) + 1) + ((damage.nextInt(MONSTER_ATTACK/2)) + 1) + (MONSTER_ATTACK/2));
-            HERO_HEALTH = HERO_HEALTH - monsterDamage;
-            System.out.println(MONSTER_NAME + " hits you for " + monsterDamage + " damage");
+            int monsterDamage = (((damage.nextInt(monsterAttack/2)) + 1) + ((damage.nextInt(monsterAttack/2)) + 1) + (monsterAttack/2));
+            heroHealth = heroHealth - monsterDamage;
+            System.out.println(monsterName + " hits you for " + monsterDamage + " damage");
             System.out.println();
             }
             
                 //If monster's health is 0 or below
-                if (MONSTER_HEALTH <= 0) {
+                if (monsterHealth <= 0) {
                 //Stop combat loop by setting control variable to false
-                Action = 9;
+                action = 9;
                 //Print victory message: “You defeated the <monstername>!”
-                System.out.println("You defeated the " + MONSTER_NAME);
+                System.out.println("You defeated the " + monsterName);
                 }
                 
                 //Player health is 0 or below
-                if (HERO_HEALTH <= 0) {
+                if (heroHealth <= 0) {
                     System.out.println("You died");
                     System.out.println("Try Again? 1) Yes or 2) No");
                     //Stop combat loop
-                    Action = 9;
+                    action = 9;
                     //Have user input assign to retry variable
-                    int Answer;
-                    Answer = input.nextInt();
+                    int answer;
+                    answer = input.nextInt();
                     
                     //If user decides to retry
-                    if (Answer == 1) {
+                    if (answer == 1) {
                         //Continue combat loop
-                        Action = 0;
+                        action = 0;
                         //Reset data variables to initial
-                        MONSTER_HEALTH = INITIAL_MONSTER_HEALTH;
-                        MONSTER_ATTACK = INITIAL_MONSTER_ATTACK;
-                        HERO_HEALTH = INITIAL_HERO_HEALTH;
-                        HERO_ATTACK = INITIAL_HERO_ATTACK;
-                        HERO_MAGIC = INITIAL_HERO_MAGIC;
+                        monsterHealth = initialMonsterHealth;
+                        monsterAttack = initialMonsterAttack;
+                        heroHealth = initialHeroHealth;
+                        heroAttack = initalHeroAttack;
+                        heroMagic = initialHeroMagic;
                     }
                 }                    
     }
@@ -252,16 +252,16 @@ public class BuildAHeroTest3
       statTransition();
       
         //Declare variable that will be used for retry answer
-        int Answer;
+        int answer;
         
         
         
-          while (Action != 9) { 
+          while (action != 9) { 
           //Printing of combat information
           combatInfo();
-            Action = 0;
+            action = 0;
               //While Action is neither 1, 2, 3, and 4 OR while Action is 2 without having 3 or more mana
-              while ((Action != 1 && Action != 2 && Action != 3 && Action != 4) || (Action == 2 && HERO_MAGIC < 3)) {
+              while ((action != 1 && action != 2 && action != 3 && action != 4) || (action == 2 && heroMagic < 3)) {
               //Combat loop method
               combatLoop1();
             }
