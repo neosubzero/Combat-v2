@@ -1,0 +1,17 @@
++ Good formatting
+
++ Nice use of ArrayList
+
++ Impressive number of combat variables
+
++ Good variable naming and method naming!
+
+- No comments
+
++ Nice use of formatted print statements
+
+- combatLoop2 is very complicated; consider breaking it into smaller functions.  A good rule of thumb that functions should be no more than about a dozen lines of code.
+
+Grade: 100
+Bonus:  10
+Final: 110
